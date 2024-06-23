@@ -17,7 +17,7 @@
 /* Define dark mode variables */
 :root[data-theme='dark'] {
     --primary-color: #4CAF50; /* Green color for navbar, highlights */
-    --secondary-color: #2b2b2b; /* Dark gray color for text and borders */
+    --secondary-color: white; /* Dark gray color for text and borders */
     --background-color: rgb(19, 19, 19); /* White color for background and content boxes */
 }
 
@@ -40,6 +40,12 @@ canvas {
     border: 1px solid var(--secondary-color);
 }
 
+
+a {
+    text-decoration: none;
+    color: initial;
+}
+
 /* ---------------------------- Navbar styles ---------------------------- */
 .navbar {
     background-color: var(--primary-color);
@@ -58,6 +64,7 @@ canvas {
     display: inline;
     float: right;
     padding-right: 20px;
+    color: var(--secondary-color);
 }
 
 .nav-links li {
@@ -66,7 +73,7 @@ canvas {
 }
 
 .nav-links a {
-    color: var(--background-color);
+    color: var(--secondary-color);
     text-decoration: none;
     font-weight: bold;
 }
@@ -74,6 +81,31 @@ canvas {
 .nav-links a:hover {
     text-decoration: underline;
 }
+
+
+/* ------------- theme button ------------- */
+.theme-toggle {
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    position: relative;
+    outline: none;
+}
+
+.theme-toggle i {
+    color: var(--secondary-color);
+    font-size: 24px;
+    transition: inherit;
+    transition: color 0.3s;
+}
+.theme-toggle:hover i {
+    transform: scale(1.1);
+    color: var(--background-color);
+}
+
 
 /* ---------------------------- Main title style ---------------------------- */
 .main-title {

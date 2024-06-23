@@ -7,6 +7,7 @@
 
 document.addEventListener('DOMContentLoaded', () => { 
 
+    // --- First Operations ========================================================================================
     // head links ============================================
     var generate_css = ()=> {
         const pathname = window.location.pathname;
@@ -24,34 +25,37 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementsByTagName( "head" )[0].appendChild( link );
     }
     generate_css();
+    var generate_google_icons = ()=> {
+        var link = document.createElement( "link" );
+        link.href = "https://fonts.googleapis.com/icon?family=Material+Icons";
+        link.rel = "stylesheet";
+
+        document.getElementsByTagName( "head" )[0].appendChild( link );
+    }
+    generate_google_icons();
 
 
     // navbar element ============================================
-    
-    // theme toggle ------
-    const themeToggleButton = document.getElementById('themeBtn');
-    const currentTheme = localStorage.getItem('theme') || 'light';
-    // Apply the current theme
-    document.documentElement.setAttribute('data-theme', currentTheme);
-    // Toggle theme when button is clicked
-    themeToggleButton.addEventListener('click', () => themeToggle('data-theme'));
-
-
-    // navbar build ------
     const nav = `    <nav class="navbar">
                         <div class="container">
-                            <h1 class="nav-title">Algorithm Visualizer</h1>
+                            <div class="logo">
+                                <img width="80" height="80" src="${getDynamicURL('logo.svg', 'assets')}" alt="Algorithm Visualizer Logo" class="logo">
+                                <span class="nav-title">Algo Visualizer</span>
+                            </div>
                             <ul class="nav-links">
                                 <li><a href="${changeNavURL('home')}">Home</a></li>
                                 <li><a href="#algorithms">Algorithms</a></li>
                                 <li><a href="${changeNavURL('about')}">About</a></li>
                                 <li><a href="#contact">Contact</a></li>
+                                <button id="themeBtn" class="theme-toggle">
+                                    <i class="material-icons" id="theme-icon">wb_sunny</i>
+                                </button>
                             </ul>
                         </div>
-                    </nav>`;
+                    </nav>
+`;
     const navEl = document.querySelector('.navEl');
     navEl.innerHTML = nav;
-
 
 
 
@@ -65,13 +69,32 @@ document.addEventListener('DOMContentLoaded', () => {
     footerEl.innerHTML = footer;
 
 
+    // --- Additional Operations ========================================================================================
+    // Actions To Do ============================================
+
+    // theme toggle ------
+    const themeToggleButton = document.getElementById('themeBtn');
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    // Apply the current theme
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    // themeToggleButton.children[0].innerHTML = currentTheme == 'light' ? 'wb_sunny' : 'nights_stay';
+    // Toggle theme when button is clicked
+    themeToggleButton.addEventListener('click', () => {
+        themeToggle('data-theme');
+        themeToggleButton.children[0].innerHTML = currentTheme == 'light' ? 'wb_sunny' : 'nights_stay';
+    });
+
 });
 
 
 
 // console.log(currIsHome(window.location.pathname));
 
-// functions used ============================================
+
+
+
+// functions used ============================================ ==========================
+// change the nav urls to the correct path
 function changeNavURL(name) {
     const pathname = window.location.pathname;
     var genURL = '';
@@ -92,11 +115,47 @@ function changeNavURL(name) {
     return genURL;
 }
 
+// get the correct url of the files from [specific] folders (dynamically)
+function getDynamicURL(fileName, folderName) {
+    const pathname = window.location.pathname;
+    var genURL = '';
+    if(folderName == 'assets') {
+        if(currIsHome(pathname)) {
+            genURL= 'assets/'+fileName;
+        } else {
+            genURL= '../assets/'+fileName;
+        }
+    }
+    else if(folderName == 'pages') {
+        if(currIsHome(pathname)) {
+            genURL= 'pages/'+fileName;
+        } else {
+            genURL= '../pages/'+fileName;
+        }
+    }
+    else if(folderName == 'js') {
+        if(currIsHome(pathname)) {
+            genURL= 'assets/js/'+fileName;
+        } else {
+            genURL= '../assets/js/'+fileName;
+        }
+    } else {
+        if(currIsHome(pathname)) {
+            genURL= fileName;
+        } else {
+            genURL= '../'+fileName;
+        }
+    }
+    return genURL;
+}
+
+// check if this page is from (pages) or (index >> main)
 function currIsHome(pathname) {
     if(pathname.search('pages') != -1) return false;
     return true;
 }
 
+// make the theme toggle for (theme button) when click
 function themeToggle(themeAttrName= 'data-theme') {
     let theme = document.documentElement.getAttribute(themeAttrName) === 'light' ? 'dark' : 'light';
 

@@ -1,0 +1,48 @@
+<svg width="200px" height="200px" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Define gradient for the book cover -->
+    <defs>
+        <linearGradient id="coverGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#4CAF50;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#388E3C;stop-opacity:1" />
+        </linearGradient>
+    </defs>
+    
+    <!-- Background circle -->
+    <circle cx="100" cy="100" r="98" fill="#f4f4f4" stroke="#333" stroke-width="4" />
+
+    <!-- Left cover of the book -->
+    <path d="M50,60 L50,160 L120,130 L120,30 Z" fill="url(#coverGradient)" stroke="#333" stroke-width="2" />
+
+    <!-- Right cover of the book -->
+    <path d="M150,60 L150,160 L120,130 L120,30 Z" fill="url(#coverGradient)" stroke="#333" stroke-width="2" />
+
+    <!-- Book pages -->
+    <path d="M50,60 Q100,30 150,60" fill="#FFF" stroke="#333" stroke-width="2" />
+    <path d="M50,160 Q100,130 150,160" fill="#FFF" stroke="#333" stroke-width="2" />
+    <path d="M50,60 Q100,90 150,60" fill="none" stroke="#DDD" stroke-width="2" />
+    <path d="M50,160 Q100,190 150,160" fill="none" stroke="#DDD" stroke-width="2" />
+
+    <!-- Book spine shadow -->
+    <path d="M50,60 L50,160 L55,158 L55,58 Z" fill="rgba(0, 0, 0, 0.1)" />
+    <path d="M150,60 L150,160 L145,158 L145,58 Z" fill="rgba(0, 0, 0, 0.1)" />
+
+    <!-- Bookmark -->
+    <path d="M95,60 L105,60 L105,100 L100,95 L95,100 Z" fill="#FFC107" stroke="#333" stroke-width="1" />
+
+    <!-- Graduation cap -->
+    <path d="M100,30 L110,40 L100,50 L90,40 Z" fill="#333" />
+    <path d="M97,47 L97,60 L103,60 L103,47 Z" fill="#333" />
+    <circle cx="100" cy="46" r="2" fill="#333" />
+
+    <!-- Additional decorations on pages -->
+    <line x1="70" y1="70" x2="130" y2="70" stroke="#DDD" stroke-width="1" />
+    <line x1="70" y1="80" x2="130" y2="80" stroke="#DDD" stroke-width="1" />
+    <line x1="70" y1="90" x2="130" y2="90" stroke="#DDD" stroke-width="1" />
+    <line x1="70" y1="100" x2="130" y2="100" stroke="#DDD" stroke-width="1" />
+    <line x1="70" y1="110" x2="130" y2="110" stroke="#DDD" stroke-width="1" />
+    <line x1="70" y1="120" x2="130" y2="120" stroke="#DDD" stroke-width="1" />
+    <line x1="70" y1="130" x2="130" y2="130" stroke="#DDD" stroke-width="1" />
+
+    <!-- Optional text (Logo title) -->
+    <text x="100" y="180" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#333">AlgoVisua</text>
+</svg>
