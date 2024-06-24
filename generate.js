@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const nav = `    <nav class="navbar">
                         <div class="container">
                             <div class="logo">
-                                <img width="80" height="80" src="${getDynamicURL('logo.svg', 'assets')}" alt="Algorithm Visualizer Logo" class="logo">
+                                <img width="50" height="50" src="${getDynamicURL('logo.svg', 'assets')}" alt="Algorithm Visualizer Logo" class="logo">
                                 <span class="nav-title">Algo Visualizer</span>
                             </div>
                             <ul class="nav-links">
@@ -60,9 +60,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // footer element ============================================
+    var currYear = new Date().getFullYear();
     const footer = `<footer class="footer">
                         <div class="container">
-                            <p>&copy; 2024 Algorithm Visualizer. All Rights Reserved.</p>
+                            <p>&copy; ${currYear} Algorithm Visualizer. All Rights Reserved. <br /> <a href="#ff" target="_blank">Abdelrhman Ashraf</a> Made it.</p>
                         </div>
                     </footer>`;
     const footerEl = document.querySelector('.footerEl');
@@ -77,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentTheme = localStorage.getItem('theme') || 'light';
     // Apply the current theme
     document.documentElement.setAttribute('data-theme', currentTheme);
-    // themeToggleButton.children[0].innerHTML = currentTheme == 'light' ? 'wb_sunny' : 'nights_stay';
+    themeToggleButton.children[0].innerHTML = currentTheme == 'light' ? 'wb_sunny' : 'nights_stay';
     // Toggle theme when button is clicked
     themeToggleButton.addEventListener('click', () => {
         themeToggle('data-theme');
@@ -139,6 +140,12 @@ function getDynamicURL(fileName, folderName) {
         } else {
             genURL= '../assets/js/'+fileName;
         }
+    } else if(folderName == 'content') {
+        if(currIsHome(pathname)) {
+            genURL= 'assets/content/'+fileName;
+        } else {
+            genURL= '../assets/content/'+fileName;
+        }
     } else {
         if(currIsHome(pathname)) {
             genURL= fileName;
@@ -161,4 +168,28 @@ function themeToggle(themeAttrName= 'data-theme') {
 
     document.documentElement.setAttribute(themeAttrName, theme);
     localStorage.setItem('theme', theme); // Save the preference in localStorage
+}
+
+
+// fetch 
+async function fetchData(url) {
+    try {
+        // Perform the fetch request
+        const response = await fetch(url);
+
+        // Check if the response status is OK
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        // Parse the response as JSON
+        const data = await response.json();
+
+        // Return the fetched data
+        return data;
+    } catch (error) {
+        // Handle and log the error
+        console.error("Error fetching data:", error);
+        throw error; // Optionally, rethrow the error for further handling
+    }
 }

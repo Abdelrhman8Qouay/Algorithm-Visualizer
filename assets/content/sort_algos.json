@@ -1,0 +1,39 @@
+{
+    "bubble": {
+        "title": "Bubble Sort",
+        "description": "Bubble Sort is a simple comparison-based sorting algorithm. It repeatedly steps through the list to be sorted, compares each pair of adjacent items, and swaps them if they are in the wrong order. The pass through the list is repeated until no swaps are needed, which indicates that the list is sorted.",
+        "steps": [
+            "Start at the beginning of the list.",
+            "Compare the first two elements. If the first element is larger than the second, swap them.",
+            "Move to the next pair of elements and repeat the comparison and swapping process.",
+            "Continue this process until the end of the list is reached.",
+            "After one complete pass, the largest element will have 'bubbled' up to the end of the list.",
+            "Ignore the last sorted element and repeat the process for the remaining list.",
+            "Continue the passes until no more swaps are needed."
+        ],
+        "pseudo_code": [
+            "procedure bubbleSort(A : list of sortable items)",
+            "    n := length(A)",
+            "    for i := 0 to n-1 do",
+            "        for j := 0 to n-2-i do",
+            "            if A[j] > A[j+1] then",
+            "                swap(A[j], A[j+1])",
+            "            end if",
+            "        end for",
+            "    end for",
+            "end procedure"
+        ],
+        "complexity_details": {
+            "worst_case": "O(n^2) - Occurs when the list is in reverse order.",
+            "average_case": "O(n^2) - Average time complexity for random order of elements.",
+            "best_case": "O(n) - Occurs when the list is already sorted.",
+            "space_complexity": "O(1) - Only a single additional memory space is required for the swap operation."
+        },
+        "applications": [
+            "Educational purposes to understand sorting concepts and algorithms.",
+            "Sorting small datasets where performance is not a critical issue.",
+            "Used in cases where memory space is a constraint as it has O(1) space complexity.",
+            "Useful for testing and debugging as its logic is simple and easy to implement."
+        ]
+    }
+}
