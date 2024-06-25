@@ -7,77 +7,6 @@
 </head>
 
 <style>
-
-form {
-    background-color: var(--form-background);
-    padding: 20px;
-    border-radius: var(--border-radius);
-    margin-bottom: 20px;
-    box-shadow: var(--box-shadow);
-    transition: all var(--transition-speed);
-}
-
-form:hover {
-    transform: translateY(var(--hover-translate));
-}
-
-.form-group {
-    margin: var(--form-group-margin);
-    position: relative;
-}
-
-.form-group label {
-    display: block;
-    font-size: 1.1em;
-    color: var(--secondary-color);
-    margin-bottom: 10px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-}
-
-.form-group label i {
-    margin-right: 10px;
-    color: var(--icon-color);
-}
-
-form input, form select {
-    width: 100%;
-    padding: var(--input-padding);
-    margin-bottom: 10px;
-    border: 1px solid var(--canvas-border);
-    border-radius: var(--border-radius);
-}
-
-form button {
-    background-color: var(--button-color);
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-    padding: var(--input-padding);
-    width: 100%;
-    border-radius: var(--border-radius);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    transition: all var(--transition-speed);
-}
-
-form button:hover {
-    background-color: var(--button-hover-color);
-}
-
-.visualization-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    aspect-ratio: 16 / 9;
-}
-
-
-
 .customBtn {
     width: 100%;
     background-color: var(--background-color);
@@ -95,7 +24,6 @@ form button:hover {
     transform: translateY(-5px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
-
 </style>
 
 <body>
@@ -109,8 +37,10 @@ form button:hover {
         <div class="customBtn" onclick="classOperation('.customFloaterVis', 'show', 'toggle')">Custom Visualizing</div>
         <div class="floater_box customFloaterVis">
             <div class="box">
+                <span onclick="classOperation('.customFloaterVis', 'show', 'remove')" class="material-icons close">
+                    cancel
+                    </span>
                 <form id="dataForm">
-                    <div class="customd" onclick="classOperation('.customFloaterVis', 'show', 'remove')">X</div>
                     <div class="form-group">
                         <label for="dataInput">
                             <i class="material-icons">input</i>
@@ -124,13 +54,7 @@ form button:hover {
                             <i class="material-icons">sort</i>
                             Choose a sorting algorithm:
                         </label>
-                        <select id="algorithmSelect">
-                            <option value="bubbleSort">Bubble Sort</option>
-                            <option value="selectionSort">Selection Sort</option>
-                            <option value="insertionSort">Insertion Sort</option>
-                            <option value="quickSort">Quick Sort</option>
-                            <option value="mergeSort">Merge Sort</option>
-                        </select>
+                        <select id="algorithmSelect"></select>
                     </div>
     
                     <button type="button" id="visualizeBtn">
@@ -147,7 +71,7 @@ form button:hover {
                     <h1 id="algorithmTitle"></h1>
                     <p id="algorithmDescription"></p>
                     
-                    <h2>Steps</h2>
+                    <h2>Steps To Use</h2>
                     <ol id="algorithmSteps"></ol>
                     
                     <h2>Pseudo Code</h2>
@@ -156,7 +80,7 @@ form button:hover {
                     <h2>Complexity Details</h2>
                     <ul id="algorithmComplexity"></ul>
                     
-                    <h2>Applications</h2>
+                    <h2>Applications & When Use</h2>
                     <ul id="algorithmApplications"></ul>
                 </div>
             </div>

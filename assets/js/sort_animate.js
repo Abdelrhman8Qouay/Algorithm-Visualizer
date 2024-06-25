@@ -102,18 +102,40 @@ class BubbleSortAnimation {
     }
 }
 
-const array = [4, 20, 64, 8, 1, 11];
-const bubbleSort = new BubbleSortAnimation('bubbleSortCanvas', array, 500); // Set delay to 500ms
-bubbleSort.start();
+// Variables ====================================
+const algorithmSelect = document.getElementById('algorithmSelect');
+
+// DOMContent Work ====================================
+document.addEventListener('DOMContentLoaded', () => {
+
+    const array = [4, 20, 64, 8, 1, 11];
+    const bubbleSort = new BubbleSortAnimation('bubbleSortCanvas', array, 500); // Set delay to 500ms
+    bubbleSort.start();
 
 
 
-// Custom Visualizing ===================================
+    // Operations ====================================
+
+    // put the options of the select form --------------------
+    fetchData(getDynamicURL('sort_algos.json', 'content'))
+        .then(data => {
+            for(let {name, value} of data.all) {
+                algorithmSelect.innerHTML+= `<option value="${value}">${name}</option>`;
+            }
+        })
+        .catch(error => {
+            algorithmSelect.innerHTML= `<option value="No Data">No Data Given</option>`;
+            console.error("Failed to fetch data:", error);
+        });
+
+});
+
+// Custom Visualizing --------------------
 
 // Handle form submission
 document.getElementById('visualizeBtn').addEventListener('click', () => {
     const dataInput = document.getElementById('dataInput').value;
-    // const algorithm = document.getElementById('algorithmSelect').value;
+    const algorithmChosen = algorithmSelect.value;
 
     // Parse the input data
     const data = dataInput.split(',').map(Number);
@@ -131,42 +153,40 @@ document.getElementById('visualizeBtn').addEventListener('click', () => {
 
     fetchData(getDynamicURL('sort_algos.json', 'content'))
     .then(data => {
-        const algorithm = data.bubble;
+        const algorithm = data[algorithmChosen]; // get the data of algo chosen
 
-            // Set title and description
-            document.getElementById('algorithmTitle').innerText = algorithm.title;
-            document.getElementById('algorithmDescription').innerText = algorithm.description;
+        // Set title and description
+        document.getElementById('algorithmTitle').innerText = algorithm.title;
+        document.getElementById('algorithmDescription').innerText = algorithm.description;
 
-            // Set steps
-            const stepsList = document.getElementById('algorithmSteps');
-            algorithm.steps.forEach(step => {
-                const listItem = document.createElement('li');
-                listItem.innerText = step;
-                stepsList.appendChild(listItem);
-            });
+        // Set steps
+        const stepsList = document.getElementById('algorithmSteps');
+        algorithm.steps.forEach(step => {
+            const listItem = document.createElement('li');
+            listItem.innerText = step;
+            stepsList.appendChild(listItem);
+        });
 
-            // Set pseudo code
-            document.getElementById('algorithmPseudoCode').innerText = algorithm.pseudo_code.join('\n');
+        // Set pseudo code
+        document.getElementById('algorithmPseudoCode').innerText = algorithm.pseudo_code.join('\n');
 
-            // Set complexity details
-            const complexityList = document.getElementById('algorithmComplexity');
-            for (const [key, value] of Object.entries(algorithm.complexity_details)) {
-                const listItem = document.createElement('li');
-                listItem.innerHTML = `<strong>${key.replace(/_/g, ' ')}:</strong> ${value}`;
-                complexityList.appendChild(listItem);
-            }
+        // Set complexity details
+        const complexityList = document.getElementById('algorithmComplexity');
+        for (const [key, value] of Object.entries(algorithm.complexity_details)) {
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `<strong>${key.replace(/_/g, ' ')}:</strong> ${value}`;
+            complexityList.appendChild(listItem);
+        }
 
-            // Set applications
-            const applicationsList = document.getElementById('algorithmApplications');
-            algorithm.applications.forEach(application => {
-                const listItem = document.createElement('li');
-                listItem.innerText = application;
-                applicationsList.appendChild(listItem);
-            });
+        // Set applications
+        const applicationsList = document.getElementById('algorithmApplications');
+        algorithm.applications.forEach(application => {
+            const listItem = document.createElement('li');
+            listItem.innerText = application;
+            applicationsList.appendChild(listItem);
+        });
     })
     .catch(error => {
         console.error("Failed to fetch data:", error);
     });
 });
-
-console.log(getDynamicURL('logo.svg', 'assets'))

@@ -39,8 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const nav = `    <nav class="navbar">
                         <div class="container">
                             <div class="logo">
-                                <img width="50" height="50" src="${getDynamicURL('logo.svg', 'assets')}" alt="Algorithm Visualizer Logo" class="logo">
-                                <span class="nav-title">Algo Visualizer</span>
+                                <img width="150" height="50" src="${getDynamicURL('logo.svg', 'assets')}" alt="Algorithm Visualizer Logo" class="logo">
                             </div>
                             <ul class="nav-links">
                                 <li><a href="${changeNavURL('home')}">Home</a></li>

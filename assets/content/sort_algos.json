@@ -1,4 +1,43 @@
 {
+    "all": [
+        {
+            "name": "Bubble Sort",
+            "value": "bubble"
+        },
+        {
+            "name": "Selection Sort",
+            "value": "selection"
+        },
+        {
+            "name": "Insertion Sort",
+            "value": "insertion"
+        },
+        {
+            "name": "Merge Sort",
+            "value": "merge"
+        },
+        {
+            "name": "Quick Sort",
+            "value": "quick"
+        },
+        {
+            "name": "Heap Sort",
+            "value": "heap"
+        },
+        {
+            "name": "Radix Sort",
+            "value": "radix"
+        },
+        {
+            "name": "Counting Sort",
+            "value": "counting"
+        }
+    ],
+
+
+
+
+    
     "bubble": {
         "title": "Bubble Sort",
         "description": "Bubble Sort is a simple comparison-based sorting algorithm. It repeatedly steps through the list to be sorted, compares each pair of adjacent items, and swaps them if they are in the wrong order. The pass through the list is repeated until no swaps are needed, which indicates that the list is sorted.",
@@ -34,6 +73,313 @@
             "Sorting small datasets where performance is not a critical issue.",
             "Used in cases where memory space is a constraint as it has O(1) space complexity.",
             "Useful for testing and debugging as its logic is simple and easy to implement."
+        ]
+    },
+    "selection": {
+        "title": "Selection Sort",
+        "description": "Selection Sort is a simple comparison-based sorting algorithm. It works by dividing the input list into two parts: a sorted sublist and an unsorted sublist. Initially, the sorted sublist is empty and the unsorted sublist is the entire input list. The algorithm repeatedly finds the smallest element in the unsorted sublist and swaps it with the leftmost unsorted element. This moves the smallest unsorted element to the sorted sublist.",
+        "steps": [
+            "Set the first element of the list as the minimum.",
+            "Iterate through the list starting from the second element.",
+            "In each iteration, compare the current element with the minimum.",
+            "If the current element is smaller than the minimum, update the minimum.",
+            "After completing one pass, swap the minimum element with the first unsorted element.",
+            "Repeat the above steps for the remaining elements until the entire list is sorted."
+        ],
+        "pseudo_code": [
+            "procedure selectionSort(A : list of sortable items)",
+            "    n := length(A)",
+            "    for i := 0 to n-2 do",
+            "        minIndex := i",
+            "        for j := i+1 to n-1 do",
+            "            if A[j] < A[minIndex] then",
+            "                minIndex := j",
+            "            end if",
+            "        end for",
+            "        swap(A[i], A[minIndex])",
+            "    end for",
+            "end procedure"
+        ],
+        "complexity_details": {
+            "worst_case": "O(n^2) - Occurs when the list is in reverse order.",
+            "average_case": "O(n^2) - Average time complexity for random order of elements.",
+            "best_case": "O(n^2) - Occurs when the list is already sorted (because of the swap operation).",
+            "space_complexity": "O(1) - Only a single additional memory space is required."
+        },
+        "applications": [
+            "Selection Sort is useful when auxiliary memory is limited because it requires only a constant amount of extra memory space (O(1) space complexity).",
+            "It is suitable for sorting small data sets or when sorting in place is required.",
+            "Selection Sort can be used as a building block for other algorithms like Heap Sort."
+        ]
+    },
+    "insertion": {
+        "title": "Insertion Sort",
+        "description": "Insertion Sort is a simple comparison-based sorting algorithm. It builds the final sorted array (or list) one item at a time. It works similar to how you sort playing cards in your hands. The algorithm iterates over the list, shifting elements as needed to insert each element into its correct position.",
+        "steps": [
+            "Start with the second element (index 1) and compare it with the first element (index 0).",
+            "If the second element is smaller, swap it with the first element.",
+            "Continue comparing and shifting elements until the entire list is sorted."
+        ],
+        "pseudo_code": [
+            "procedure insertionSort(A : list of sortable items)",
+            "    n := length(A)",
+            "    for i := 1 to n-1 do",
+            "        current := A[i]",
+            "        j := i - 1",
+            "        while j >= 0 and A[j] > current do",
+            "            A[j + 1] := A[j]",
+            "            j := j - 1",
+            "        end while",
+            "        A[j + 1] := current",
+            "    end for",
+            "end procedure"
+        ],
+        "complexity_details": {
+            "worst_case": "O(n^2) - Occurs when the list is in reverse order.",
+            "average_case": "O(n^2) - Average time complexity for random order of elements.",
+            "best_case": "O(n) - Occurs when the list is already sorted (minimal shifting required).",
+            "space_complexity": "O(1) - Only a constant amount of additional memory space is required."
+        },
+        "applications": [
+            "Insertion Sort is efficient for sorting small data sets or nearly sorted data.",
+            "It is often used as part of more complex algorithms like Shell Sort.",
+            "Insertion Sort can be used in scenarios where the number of elements is small or when auxiliary memory is limited."
+        ]
+    },
+    "merge": {
+        "title": "Merge Sort",
+        "description": "Merge Sort is a divide-and-conquer sorting algorithm. It works by recursively dividing the input array into two halves, sorting each half independently, and then merging the sorted halves back together. The merge operation combines two sorted arrays into a single sorted array.",
+        "steps": [
+            "Divide the unsorted list into n sublists, each containing one element.",
+            "Repeatedly merge sublists to produce new sorted sublists until there is only one sublist remaining."
+        ],
+        "pseudo_code": [
+            "procedure mergeSort(A : list of sortable items)",
+            "    if length(A) <= 1 then",
+            "        return A",
+            "    end if",
+            "    mid := length(A) / 2",
+            "    left := mergeSort(A[0 to mid - 1])",
+            "    right := mergeSort(A[mid to length(A) - 1])",
+            "    return merge(left, right)",
+            "end procedure",
+            "",
+            "procedure merge(left : list of sortable items, right : list of sortable items)",
+            "    result := new empty list",
+            "    while length(left) > 0 and length(right) > 0 do",
+            "        if left[0] <= right[0] then",
+            "            append left[0] to result",
+            "            left := left[1 to length(left) - 1]",
+            "        else",
+            "            append right[0] to result",
+            "            right := right[1 to length(right) - 1]",
+            "        end if",
+            "    end while",
+            "    while length(left) > 0 do",
+            "        append left[0] to result",
+            "        left := left[1 to length(left) - 1]",
+            "    end while",
+            "    while length(right) > 0 do",
+            "        append right[0] to result",
+            "        right := right[1 to length(right) - 1]",
+            "    end while",
+            "    return result",
+            "end procedure"
+        ],
+        "complexity_details": {
+            "worst_case": "O(n log n) - Guaranteed performance for all input lists.",
+            "average_case": "O(n log n) - Average time complexity for random order of elements.",
+            "best_case": "O(n log n) - Occurs when the input is already sorted or consists of equal elements.",
+            "space_complexity": "O(n) - Additional memory space is required for the merge process."
+        },
+        "applications": [
+            "Merge Sort is widely used for sorting linked lists and external sorting.",
+            "It is often used as a benchmark for comparison with other sorting algorithms.",
+            "Merge Sort is suitable for sorting large data sets where random access is expensive or limited."
+        ]
+    },
+    "quick": {
+        "title": "Quick Sort",
+        "description": "Quick Sort is a highly efficient comparison-based sorting algorithm. It uses a divide-and-conquer approach to sort elements. The algorithm picks a 'pivot' element and partitions the array into two sub-arrays: elements smaller than the pivot and elements greater than the pivot. It then recursively sorts the sub-arrays.",
+        "steps": [
+            "Choose a 'pivot' element from the array.",
+            "Partition the array into two sub-arrays: elements less than the pivot and elements greater than the pivot.",
+            "Recursively apply Quick Sort to the sub-arrays."
+        ],
+        "pseudo_code": [
+            "procedure quickSort(A : list of sortable items)",
+            "    if length(A) <= 1 then",
+            "        return A",
+            "    end if",
+            "    pivot := select any element from A",
+            "    left := new empty list",
+            "    right := new empty list",
+            "    for each x in A except pivot do",
+            "        if x < pivot then",
+            "            append x to left",
+            "        else",
+            "            append x to right",
+            "        end if",
+            "    end for",
+            "    return concatenate(quickSort(left), pivot, quickSort(right))",
+            "end procedure"
+        ],
+        "complexity_details": {
+            "worst_case": "O(n^2) - Occurs when the pivot chosen is either the smallest or largest element in every partition.",
+            "average_case": "O(n log n) - Average time complexity for random order of elements.",
+            "best_case": "O(n log n) - Occurs when the pivot divides the array into two sub-arrays of equal size.",
+            "space_complexity": "O(log n) - Additional memory space is required for the recursive calls (stack space)."
+        },
+        "applications": [
+            "Quick Sort is widely used in practice due to its efficiency and in-place partitioning.",
+            "It is often used as a subroutine in other algorithms like Timsort and introspective sort.",
+            "Quick Sort is suitable for sorting large datasets and arrays."
+        ]
+    },
+    "counting": {
+        "title": "Counting Sort",
+        "description": "Counting Sort is an integer sorting algorithm. It works by counting the number of occurrences of each unique element in the input array. It then uses these counts to place each element in its correct sorted position. Counting Sort requires knowledge of the range of the input elements.",
+        "steps": [
+            "Determine the range of input elements (minimum and maximum values).",
+            "Initialize an auxiliary array 'count' to store the count of each unique element.",
+            "Iterate through the input array and increment the count of each element.",
+            "Modify the 'count' array to store the cumulative count of each element.",
+            "Iterate through the input array in reverse to place each element in its correct sorted position."
+        ],
+        "pseudo_code": [
+            "procedure countingSort(A : list of sortable items)",
+            "    min := minimum value of A",
+            "    max := maximum value of A",
+            "    range := max - min + 1",
+            "    count := new array of size range filled with 0",
+            "    output := new empty list",
+            "    for i := 0 to length(A) - 1 do",
+            "        count[A[i] - min] := count[A[i] - min] + 1",
+            "    end for",
+            "    for i := 1 to range - 1 do",
+            "        count[i] := count[i] + count[i - 1]",
+            "    end for",
+            "    for i := length(A) - 1 down to 0 do",
+            "        output[count[A[i] - min] - 1] := A[i]",
+            "        count[A[i] - min] := count[A[i] - min] - 1",
+            "    end for",
+            "    for i := 0 to length(A) - 1 do",
+            "        A[i] := output[i]",
+            "    end for",
+            "end procedure"
+        ],
+        "complexity_details": {
+            "worst_case": "O(n + k) - Occurs when there are a lot of elements with similar values.",
+            "average_case": "O(n + k) - Average time complexity where n is the number of elements and k is the range of input.",
+            "best_case": "O(n + k) - Occurs when the range of input is smaller compared to the number of elements.",
+            "space_complexity": "O(n + k) - Requires additional space proportional to the range of input elements."
+        },
+        "applications": [
+            "Counting Sort is efficient when the range of input elements is known beforehand.",
+            "It is used for sorting non-comparative data like positive integers, where the range is manageable.",
+            "Counting Sort is suitable for scenarios where linear time complexity is required."
+        ]
+    },
+    "radix": {
+        "title": "Radix Sort",
+        "description": "Radix Sort is a non-comparative integer sorting algorithm that sorts numbers by processing individual digits. It processes the digits of each number from the least significant digit (LSD) to the most significant digit (MSD). Radix Sort can be applied to numbers represented in any positional numeral system.",
+        "steps": [
+            "Determine the maximum number of digits in the input array.",
+            "Initialize ten buckets (0-9) for each digit place (units, tens, hundreds, etc.).",
+            "Iterate through each digit place, distributing elements into respective buckets based on the digit value.",
+            "Collect elements from buckets in order for each digit place, repeating until all digits are processed."
+        ],
+        "pseudo_code": [
+            "procedure radixSort(A : list of integers)",
+            "    max := maximum value in A",
+            "    digitPlace := 1",
+            "    while max / digitPlace > 0 do",
+            "        countSort(A, digitPlace)",
+            "        digitPlace := digitPlace * 10",
+            "    end while",
+            "end procedure",
+            "",
+            "procedure countSort(A : list of integers, digitPlace : integer)",
+            "    output := new empty list",
+            "    count := new array of size 10 filled with 0",
+            "    for i := 0 to length(A) - 1 do",
+            "        index := (A[i] / digitPlace) % 10",
+            "        count[index] := count[index] + 1",
+            "    end for",
+            "    for i := 1 to 9 do",
+            "        count[i] := count[i] + count[i - 1]",
+            "    end for",
+            "    for i := length(A) - 1 down to 0 do",
+            "        index := (A[i] / digitPlace) % 10",
+            "        output[count[index] - 1] := A[i]",
+            "        count[index] := count[index] - 1",
+            "    end for",
+            "    for i := 0 to length(A) - 1 do",
+            "        A[i] := output[i]",
+            "    end for",
+            "end procedure"
+        ],
+        "complexity_details": {
+            "worst_case": "O(n * k) - Occurs when the number of digits (k) is significantly larger than the number of elements (n).",
+            "average_case": "O(n * k) - Average time complexity where k is the number of digits.",
+            "best_case": "O(n * k) - Occurs when all elements have the same number of digits.",
+            "space_complexity": "O(n + k) - Requires additional space proportional to the number of digits (k)."
+        },
+        "applications": [
+            "Radix Sort is used for sorting numbers represented in positional numeral systems (like decimal or binary).",
+            "It is efficient for large datasets where the range of elements is known and bounded.",
+            "Radix Sort is suitable for scenarios requiring stable sorting of integers."
+        ]
+    },
+    "heap": {
+        "title": "Heap Sort",
+        "description": "Heap Sort is a comparison-based sorting algorithm that operates by first constructing a heap data structure from the input array. It then repeatedly extracts the maximum (for max-heap) or minimum (for min-heap) element from the heap and reconstructs the heap with the remaining elements.",
+        "steps": [
+            "Build a max-heap or min-heap from the input array.",
+            "Repeatedly remove the root element (largest or smallest) from the heap and rebuild the heap."
+        ],
+        "pseudo_code": [
+            "procedure heapSort(A : list of sortable items)",
+            "    n := length(A)",
+            "    buildMaxHeap(A, n)",
+            "    for i := n - 1 downto 1 do",
+            "        swap(A[0], A[i])",
+            "        maxHeapify(A, 0, i)",
+            "    end for",
+            "end procedure",
+            "",
+            "procedure buildMaxHeap(A : list of sortable items, n : integer)",
+            "    for i := floor(n / 2) - 1 downto 0 do",
+            "        maxHeapify(A, i, n)",
+            "    end for",
+            "end procedure",
+            "",
+            "procedure maxHeapify(A : list of sortable items, i : integer, n : integer)",
+            "    left := 2 * i + 1",
+            "    right := 2 * i + 2",
+            "    largest := i",
+            "    if left < n and A[left] > A[largest] then",
+            "        largest := left",
+            "    end if",
+            "    if right < n and A[right] > A[largest] then",
+            "        largest := right",
+            "    end if",
+            "    if largest != i then",
+            "        swap(A[i], A[largest])",
+            "        maxHeapify(A, largest, n)",
+            "    end if",
+            "end procedure"
+        ],
+        "complexity_details": {
+            "worst_case": "O(n log n) - Guaranteed performance for all input lists.",
+            "average_case": "O(n log n) - Average time complexity for random order of elements.",
+            "best_case": "O(n log n) - Occurs when the input is already sorted or consists of equal elements.",
+            "space_complexity": "O(1) - Only a constant amount of additional memory space is required."
+        },
+        "applications": [
+            "Heap Sort is used for sorting nearly sorted or completely unsorted data.",
+            "It is often used in priority queue implementations.",
+            "Heap Sort is suitable for scenarios where in-place sorting and optimal time complexity are required."
         ]
     }
 }

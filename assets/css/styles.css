@@ -1,0 +1,152 @@
+a {
+    text-decoration: none;
+    color: initial;
+}
+
+
+/* floater box ---------------------- */
+.floater_box {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.45);
+    width: 100vw;
+    height: 100vh;
+}
+.floater_box.show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.floater_box .box {
+    background-color: var(--background-color);
+    color: var(--secondary-color);
+    border-radius: 6px;
+    width: 60%;
+    height: 70%;
+    overflow-y: auto;
+
+    position: relative;
+}
+
+.floater_box .box form {
+    padding: 20px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    transition: all var(--transition-duration);
+}
+
+.floater_box .box form:hover {
+    transform: translateY(10px);
+}
+
+.floater_box .box .form-group {
+    margin: 10px;
+    position: relative;
+}
+
+.floater_box .box .form-group label {
+    display: block;
+    font-size: 1.1em;
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.floater_box .box .form-group label i {
+    margin-right: 10px;
+    color: var(--icon-color);
+}
+
+.floater_box .box form input, form select {
+    width: 100%;
+    padding: var(--background-color);
+    margin-bottom: 10px;
+    border: 1px solid var(--canvas-border);
+    border-radius: 6px;
+}
+
+.floater_box .box form button {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    padding: var(--background-color);
+    width: 100%;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: all var(--transition-speed);
+}
+
+.floater_box .box form button:hover {
+    background-color: var(--background-color);
+}
+
+.floater_box .box .visualization-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 16 / 9;
+}
+
+
+
+.floater_box #visualizeBtn {
+    width: 100%;
+    background-color: var(--background-color);
+    padding: 10px;
+    border: 1px solid var(--secondary-color);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    cursor: pointer;
+    transition: transform var(--transition-duration), box-shadow var(--transition-duration);
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+.floater_box #visualizeBtn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+.floater_box .close {
+    font-size: 50px;
+    width: 50px;
+    height: 50px;
+    
+    position: fixed;
+    right: 40px;
+    top: 40px;
+}
+
+
+
+/* content choice ---------------------- */
+.content_choice {
+    color: var(--secondary-color);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size:15px;
+    font-weight: 200;
+    padding: 30px;
+}
+.content_choice :is(h1, h2, h3) {
+    color: var(--primary-color);
+    font-size: 30px;
+    font-weight: 700;
+}
+.content_choice *:not(h1, h2, h3, strong) {
+    margin-left: 25px;
+}
+.content_choice li {
+    margin-bottom: 5px;
+}

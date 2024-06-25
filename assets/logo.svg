@@ -1,48 +1,51 @@
-<svg width="200px" height="200px" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Define gradient for the book cover -->
-    <defs>
-        <linearGradient id="coverGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style="stop-color:#4CAF50;stop-opacity:1" />
-            <stop offset="100%" style="stop-color:#388E3C;stop-opacity:1" />
-        </linearGradient>
-    </defs>
-    
-    <!-- Background circle -->
-    <circle cx="100" cy="100" r="98" fill="#f4f4f4" stroke="#333" stroke-width="4" />
+<svg width="800" height="250" viewBox="0 0 800 250" xmlns="http://www.w3.org/2000/svg">
+  <!-- Define gradients -->
+  <defs>
+    <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2E8BC0;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#145DA0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0C2D48;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradient2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#B1C4E6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#82A6DC;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="gradient3" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" style="stop-color:#6FA3EF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3A8FF2;stop-opacity:1" />
+    </radialGradient>
+  </defs>
 
-    <!-- Left cover of the book -->
-    <path d="M50,60 L50,160 L120,130 L120,30 Z" fill="url(#coverGradient)" stroke="#333" stroke-width="2" />
+  <!-- Background rectangle with rounded corners -->
+  <rect width="800" height="250" rx="40" fill="white" stroke="#0C2D48" stroke-width="4"/>
 
-    <!-- Right cover of the book -->
-    <path d="M150,60 L150,160 L120,130 L120,30 Z" fill="url(#coverGradient)" stroke="#333" stroke-width="2" />
+  <!-- Add complex decorative circles -->
+  <circle cx="100" cy="125" r="70" fill="url(#gradient1)" opacity="0.7" />
+  <circle cx="700" cy="125" r="70" fill="url(#gradient1)" opacity="0.7" />
 
-    <!-- Book pages -->
-    <path d="M50,60 Q100,30 150,60" fill="#FFF" stroke="#333" stroke-width="2" />
-    <path d="M50,160 Q100,130 150,160" fill="#FFF" stroke="#333" stroke-width="2" />
-    <path d="M50,60 Q100,90 150,60" fill="none" stroke="#DDD" stroke-width="2" />
-    <path d="M50,160 Q100,190 150,160" fill="none" stroke="#DDD" stroke-width="2" />
+  <!-- Create complex paths for the letters -->
+  <path d="M200,180 L250,70 Q275,50 300,70 L350,180 Q375,200 400,180 L450,70 Q475,50 500,70 L550,180" 
+        stroke="url(#gradient1)" stroke-width="10" fill="none" />
+  <path d="M200,180 Q225,220 250,180 Q275,140 300,180 Q325,220 350,180 Q375,140 400,180 Q425,220 450,180 Q475,140 500,180 Q525,220 550,180" 
+        stroke="url(#gradient2)" stroke-width="5" fill="none" />
+  <circle cx="600" cy="125" r="45" fill="url(#gradient3)" />
 
-    <!-- Book spine shadow -->
-    <path d="M50,60 L50,160 L55,158 L55,58 Z" fill="rgba(0, 0, 0, 0.1)" />
-    <path d="M150,60 L150,160 L145,158 L145,58 Z" fill="rgba(0, 0, 0, 0.1)" />
+  <!-- Stylized text with advanced font and shadow -->
+  <text x="100" y="160" font-family="'Poppins', sans-serif" font-size="120" fill="url(#gradient1)" style="font-weight: bold;">
+    algo
+    <tspan fill="#0C2D48">V</tspan>
+  </text>
+  <text x="105" y="165" font-family="'Poppins', sans-serif" font-size="120" fill="black" opacity="0.3" style="font-weight: bold;">
+    algoV
+  </text>
 
-    <!-- Bookmark -->
-    <path d="M95,60 L105,60 L105,100 L100,95 L95,100 Z" fill="#FFC107" stroke="#333" stroke-width="1" />
+  <!-- Decorative elements: triangles -->
+  <polygon points="600,30 630,60 570,60" fill="url(#gradient2)" />
+  <polygon points="600,220 630,190 570,190" fill="url(#gradient2)" />
 
-    <!-- Graduation cap -->
-    <path d="M100,30 L110,40 L100,50 L90,40 Z" fill="#333" />
-    <path d="M97,47 L97,60 L103,60 L103,47 Z" fill="#333" />
-    <circle cx="100" cy="46" r="2" fill="#333" />
-
-    <!-- Additional decorations on pages -->
-    <line x1="70" y1="70" x2="130" y2="70" stroke="#DDD" stroke-width="1" />
-    <line x1="70" y1="80" x2="130" y2="80" stroke="#DDD" stroke-width="1" />
-    <line x1="70" y1="90" x2="130" y2="90" stroke="#DDD" stroke-width="1" />
-    <line x1="70" y1="100" x2="130" y2="100" stroke="#DDD" stroke-width="1" />
-    <line x1="70" y1="110" x2="130" y2="110" stroke="#DDD" stroke-width="1" />
-    <line x1="70" y1="120" x2="130" y2="120" stroke="#DDD" stroke-width="1" />
-    <line x1="70" y1="130" x2="130" y2="130" stroke="#DDD" stroke-width="1" />
-
-    <!-- Optional text (Logo title) -->
-    <text x="100" y="180" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#333">AlgoVisua</text>
+  <!-- Shadow for depth -->
+  <filter id="f1" x="0" y="0">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="7" />
+  </filter>
+  <ellipse cx="400" cy="125" rx="300" ry="70" fill="black" opacity="0.1" filter="url(#f1)" />
 </svg>
